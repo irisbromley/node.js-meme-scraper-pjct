@@ -1,0 +1,12 @@
+{
+  "name": "node.js-meme-scraper-pjct",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/irisbromley/node.js-meme-scraper-pjct",
+  "author": "Iris Bromley <iris.j.bromley@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@upleveled/eslint-config-upleveled": "^3.6.2"
+  }
+}
