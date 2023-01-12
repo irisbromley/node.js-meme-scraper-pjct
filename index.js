@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import * as imageDownLoader from 'node-image-downloader';
+import * as imageDownLoader from 'image-downloader';
 
 fetch('https://memegen-link-examples-upleveled.netlify.app/')
   .then((response) => {
@@ -13,16 +13,34 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
       .map((item) => item.attribs.src)
       .slice(0, 10);
 
-    //download the image with node-image-downloader
-    // imageDownLoader({
-    //   imgs: [
-    //     {
-    //       uri: imgsrc,
-    //     },
-    //   ],
-    //   dest: './memes',
-    // });
-    console.log(imgsrc);
+    // console.log(imgsrc);
+
+    for (const url of imgsrc) {
+      console.log(url);
+    }
+    for (let i = 1; i <= 10; i++) {
+      let filename;
+      if (i < 10) {
+        filename = '0' + i + '.jpg';
+      } else if (i === 10) {
+        filename = i + '.jpg';
+      }
+      console.log(filename);
+    }
+
+
+
+    // const downloadImgAndSave = {
+    //   url, // 'http://someurl.com/image.jpg'
+    //   dest: './memes/',               // will be saved to /path/to/dest/image.jpg
+    // };
+
+    // download.image(downloadImgAndSave)
+    //   .then(({ filename }) => {
+    //     console.log('Saved to', filename); // saved to /path/to/dest/image.jpg
+    //   })
+    //   .catch((err) => console.error(err));
+    // }
   });
 
 // // Below fetch returns html of the url Wohoo
