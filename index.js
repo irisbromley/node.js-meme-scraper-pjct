@@ -8,7 +8,11 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
   .then((html) => {
     //parse the html with cheerio
     let $ = cheerio.load(html);
-    const imgsrc = $('img').attr('src');
+    const imgsrc = $('img')
+      .get()
+      .map((item) => item.attribs.src)
+      .slice(0, 10);
+
     //download the image with node-image-downloader
     // imageDownLoader({
     //   imgs: [
