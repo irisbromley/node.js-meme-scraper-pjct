@@ -12,35 +12,32 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
       .get()
       .map((item) => item.attribs.src)
       .slice(0, 10);
+    console.log(imgsrc);
 
-    // console.log(imgsrc);
-
+    let i = 0;
     for (const url of imgsrc) {
       console.log(url);
+
+      i += 1;
+      let filename = makeFileName(i);
+
+      // console.log(filename);
+
+      let dest = `./memes/${filename}`;
+      // use a package to download and save the first 10 imgs with a new assined filename 01.jpg to 10.jpg
+      const downloadImgAndSave = {
+        url, // 'http://someurl.com/image.jpg'
+        dest, // will be saved to /path/to/dest/image.jpg
+      };
+      console.log(dest);
+
+      // download
+      //   .image(downloadImgAndSave)
+      //   .then(({ filename }) => {
+      //     console.log('Saved to', filename); // saved to /path/to/dest/image.jpg
+      //   })
+      //   .catch((err) => console.error(err));
     }
-    for (let i = 1; i <= 10; i++) {
-      let filename;
-      if (i < 10) {
-        filename = '0' + i + '.jpg';
-      } else if (i === 10) {
-        filename = i + '.jpg';
-      }
-      console.log(filename);
-    }
-
-
-
-    // const downloadImgAndSave = {
-    //   url, // 'http://someurl.com/image.jpg'
-    //   dest: './memes/',               // will be saved to /path/to/dest/image.jpg
-    // };
-
-    // download.image(downloadImgAndSave)
-    //   .then(({ filename }) => {
-    //     console.log('Saved to', filename); // saved to /path/to/dest/image.jpg
-    //   })
-    //   .catch((err) => console.error(err));
-    // }
   });
 
 // // Below fetch returns html of the url Wohoo
@@ -51,3 +48,15 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
 // const parsedhtml = cheerio.load(html);
 // let imageSrc = $('id="images"').attr('src');
 // console.log(imageSrc);
+
+function makeFileName(i) {
+  let filename;
+  if (i < 10) {
+    filename = '0' + i + '.jpg';
+  } else if (i === 10) {
+    filename = i + '.jpg';
+  }
+  return filename;
+}
+
+console.log(makeFileName(10));
