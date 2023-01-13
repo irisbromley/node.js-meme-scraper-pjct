@@ -1,5 +1,18 @@
 import * as cheerio from 'cheerio';
-import * as imageDownLoader from 'image-downloader';
+import * as fs from 'fs';
+import * as client from 'https';
+
+// use the built in
+
+const folderName = './memes';
+//check if there is a folder called memes and if not make one
+try {
+  if (!fs.existsSync(folderName)) {
+    fs.mkdirSync(folderName);
+  }
+} catch (err) {
+  console.error(err);
+}
 
 fetch('https://memegen-link-examples-upleveled.netlify.app/')
   .then((response) => {
@@ -20,34 +33,12 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
 
       i += 1;
       let filename = makeFileName(i);
+      console.log(filename);
 
-      // console.log(filename);
-
-      let dest = `./memes/${filename}`;
-      // use a package to download and save the first 10 imgs with a new assined filename 01.jpg to 10.jpg
-      const downloadImgAndSave = {
-        url, // 'http://someurl.com/image.jpg'
-        dest, // will be saved to /path/to/dest/image.jpg
-      };
-      console.log(dest);
-
-      // download
-      //   .image(downloadImgAndSave)
-      //   .then(({ filename }) => {
-      //     console.log('Saved to', filename); // saved to /path/to/dest/image.jpg
-      //   })
-      //   .catch((err) => console.error(err));
+      let filepath = `./memes/${filename}`;
+      console.log(filepath);
     }
   });
-
-// // Below fetch returns html of the url Wohoo
-// fetch(url).then((response) => console.log(response.text()));
-// if (response.text()) console.log(response.text()).catch((e) => console.log(e));
-
-// // next I want to get the first 1 img from above html
-// const parsedhtml = cheerio.load(html);
-// let imageSrc = $('id="images"').attr('src');
-// console.log(imageSrc);
 
 function makeFileName(i) {
   let filename;
@@ -58,5 +49,25 @@ function makeFileName(i) {
   }
   return filename;
 }
-
 console.log(makeFileName(10));
+
+//use native code to download the images
+// function downloadImage(url, filepath) {
+//   return new Promise((resolve, reject) => {
+//     client.get(url, (res) => {
+//       if (res.statusCode === 200) {
+//         res
+//           .pipe(fs.createWriteStream(filepath))
+//           .on('error', reject)
+//           .once('close', () => resolve(filepath));
+//       } else {
+//         // Consume response data to free up memory
+//         res.resume();
+//         reject(
+//           new Error(`Request Failed With a Status Code: ${res.statusCode}`),
+//         );
+//       }
+//     });
+//   });
+// }
+// console.log(downloadImage());
