@@ -1,6 +1,6 @@
+import * as fs from 'node:fs';
+import * as https from 'node:https';
 import * as cheerio from 'cheerio';
-import * as fs from 'fs';
-import * as https from 'https';
 import fetch from 'node-fetch';
 
 const folderName = './memes';
@@ -22,13 +22,23 @@ try {
 }
 console.log('Memes folder made');
 
+function makeFileName(i) {
+  let filename;
+  if (i < 10) {
+    filename = '0' + i + '.jpg';
+  } else if (i === 10) {
+    filename = i + '.jpg';
+  }
+  return filename;
+}
+
 fetch('https://memegen-link-examples-upleveled.netlify.app/')
   .then((response) => {
     return response.text();
   })
   .then((html) => {
-    //parse the html with cheerio
-    let $ = cheerio.load(html);
+    // parse the html with cheerio
+    const $ = cheerio.load(html);
     const imgsrc = $('img')
       .get()
       .map((item) => item.attribs.src)
@@ -40,13 +50,13 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
       // console.log(url);
 
       i += 1;
-      let filename = makeFileName(i);
+      const filename = makeFileName(i);
       // console.log(filename);
 
-      let filepath = `./memes/${filename}`;
+      const filepath = `./memes/${filename}`;
       // console.log(filepath);
 
-      //download the images
+      // download the images
       https.get(url, (res) => {
         const path = filepath;
         const writeStream = fs.createWriteStream(path);
@@ -63,13 +73,3 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
   .catch((err) => {
     console.log(err);
   });
-
-function makeFileName(i) {
-  let filename;
-  if (i < 10) {
-    filename = '0' + i + '.jpg';
-  } else if (i === 10) {
-    filename = i + '.jpg';
-  }
-  return filename;
-}
