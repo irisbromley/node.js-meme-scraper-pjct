@@ -1,13 +1,14 @@
 import * as cheerio from 'cheerio';
 import * as fs from 'fs';
 import * as https from 'https';
+import fetch from 'node-fetch';
 
 const folderName = './memes';
 
 //check if there is a directory 'memes' and remove it and its content
 try {
   if (fs.existsSync(folderName)) {
-    fs.rmdirSync(folderName, { recursive: true, force: true });
+    fs.rmSync(folderName, { recursive: true, force: true });
   }
 } catch (err) {
   console.error(err);
