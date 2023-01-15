@@ -5,3 +5,6 @@ yarn-error.log*
 .DS_Store
 memes/
 # ignore the memes folder and its content
+
+.eslintcache
+*.tsbuildinfo

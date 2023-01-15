@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 
 const folderName = './memes';
 
-//check if there is a directory 'memes' and remove it and its content
+// check if there is a directory 'memes' and remove it and its content
 try {
   if (fs.existsSync(folderName)) {
     fs.rmSync(folderName, { recursive: true, force: true });
@@ -14,7 +14,7 @@ try {
   console.error(err);
 }
 
-//make a 'memes' directory
+// make a 'memes' directory
 try {
   fs.mkdirSync(folderName);
 } catch (err) {
@@ -59,6 +59,9 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
         });
       });
     }
+  })
+  .catch((err) => {
+    console.log(err);
   });
 
 function makeFileName(i) {
