@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@upleveled/eslint-config-upleveled@^3.6.2":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.6.2.tgz#5db71fca0a771b54cf9b4c7d32290ebe933f9f89"
-  integrity sha512-n1t22vbkXJZMpup6mHFCBaRbn7Eq3JBsRpGljwOIwffQGNGlu93PmgmXbcpXbBspJIP3UZL+lUP54KAi0xZKjg==
+"@upleveled/eslint-config-upleveled@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-3.7.0.tgz#4b73e1d0d2a58917db22a4f170cad0a82f665745"
+  integrity sha512-gwDWb6K45bM/TyKREwJPhgJMOZCb7o+/sCCVr7xOfAjWOPRwEQRSro2i7D9VxQzo12u27QYPg+8QDCoYD6LLQg==
 
 boolbase@^1.0.0:
   version "1.0.0"
@@ -88,11 +88,6 @@ entities@^4.2.0, entities@^4.3.0, entities@^4.4.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-4.4.0.tgz#97bdaba170339446495e653cfd2db78962900174"
   integrity sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==
 
-follow-redirects@^1.15.0:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
-  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
-
 htmlparser2@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-8.0.1.tgz#abaa985474fcefe269bc761a779b544d7196d010"
@@ -102,13 +97,6 @@ htmlparser2@^8.0.1:
     domhandler "^5.0.2"
     domutils "^3.0.1"
     entities "^4.3.0"
-
-image-downloader@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/image-downloader/-/image-downloader-4.3.0.tgz#1bc6012d4c1eeeae82b7cabada13c5d0359045f4"
-  integrity sha512-UBioN0E+8zu8N0lLC6wkZmPA/MA1A3yx9B1whjy5O/YiOV9XrSxLLKi7JqLLj6knQ3n9N1OBoHFS7shp8sehBQ==
-  dependencies:
-    follow-redirects "^1.15.0"
 
 nth-check@^2.0.1:
   version "2.1.1"
