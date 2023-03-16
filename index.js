@@ -43,18 +43,13 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
       .get()
       .map((item) => item.attribs.src)
       .slice(0, 10);
-    // console.log(imgsrc);
 
     let i = 0;
     for (const url of imgsrc) {
-      // console.log(url);
-
       i += 1;
       const filename = makeFileName(i);
-      // console.log(filename);
 
       const filepath = `./memes/${filename}`;
-      // console.log(filepath);
 
       // download the images
       https.get(url, (res) => {
